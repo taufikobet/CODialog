@@ -469,7 +469,7 @@ CODialogSynth(highlightedIndex)
     // Rekey host window
     // https://github.com/eaigner/CODialog/issues/6
     //
-    [self.hostWindow makeKeyAndVisible];
+    [self.hostWindow makeKeyWindow];
   }];
 }
 
