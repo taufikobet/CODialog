@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1156A31608D5E400D3B2E1 /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = BB1156A21608D5E400D3B2E1 /* CONTRIBUTING.md */; };
 		DC0021881537986800366339 /* Octocat.png in Resources */ = {isa = PBXBuildFile; fileRef = DC0021871537986800366339 /* Octocat.png */; };
 		DCE92A4B1536F33D006BD7ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE92A4A1536F33D006BD7ED /* UIKit.framework */; };
 		DCE92A4D1536F33D006BD7ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE92A4C1536F33D006BD7ED /* Foundation.framework */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB1156A21608D5E400D3B2E1 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		DC0021871537986800366339 /* Octocat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Octocat.png; sourceTree = "<group>"; };
 		DCE92A461536F33D006BD7ED /* CODialog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CODialog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE92A4A1536F33D006BD7ED /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -57,6 +59,7 @@
 		DCE92A3B1536F33D006BD7ED = {
 			isa = PBXGroup;
 			children = (
+				BB1156A21608D5E400D3B2E1 /* CONTRIBUTING.md */,
 				DCE92A691536F3D4006BD7ED /* CODialog.h */,
 				DCE92A6A1536F3D4006BD7ED /* CODialog.m */,
 				DCE92A501536F33D006BD7ED /* CODialog */,
@@ -165,6 +168,7 @@
 				DCE92A611536F33D006BD7ED /* COViewController.xib in Resources */,
 				DCE92A681536F3C7006BD7ED /* wallpaper.jpg in Resources */,
 				DC0021881537986800366339 /* Octocat.png in Resources */,
+				BB1156A31608D5E400D3B2E1 /* CONTRIBUTING.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
