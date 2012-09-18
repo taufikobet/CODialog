@@ -133,10 +133,12 @@ CODialogSynth(highlightedIndex)
 - (void)setProgress:(CGFloat)progress {
   UIProgressView *view = (id)self.accessoryView;
   if ([view isKindOfClass:[UIProgressView class]]) {
-    if ([view respondsToSelector:@selector(setProgress:animated:)])
+    // Check for selector for iOS 4 compatibility
+    if ([view respondsToSelector:@selector(setProgress:animated:)]) {
       [view setProgress:progress animated:YES];
-    else
-      [view setProgress:progress];	// iOS 4
+    } else {
+      [view setProgress:progress];
+    }
   }
 }
 
