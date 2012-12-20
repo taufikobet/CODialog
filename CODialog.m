@@ -85,6 +85,7 @@ CODialogSynth(highlightedIndex)
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [nc addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [nc addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [nc addObserver:self selector:@selector(orientationChanged:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
   }
   return self;
 }
@@ -120,6 +121,38 @@ CODialogSynth(highlightedIndex)
 
 - (void)keyboardWillHide:(NSNotification *)note {
   [self adjustToKeyboardBounds:CGRectZero];
+}
+
+- (void)orientationChanged:(NSNotification*)notification
+{
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         [self setTransform: [self dialogTransform]];
+                     }];
+    
+}
+
+- (CGAffineTransform)dialogTransform
+{
+#define degreesToRadian(x) (M_PI * (x) / 180.0)
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    switch ([UIApplication sharedApplication].statusBarOrientation) {
+        case UIInterfaceOrientationPortrait:
+            transform = CGAffineTransformMakeRotation(degreesToRadian(0));
+            break;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            transform = CGAffineTransformMakeRotation(degreesToRadian(180));
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+            transform = CGAffineTransformMakeRotation(degreesToRadian(270));
+            break;
+        case UIInterfaceOrientationLandscapeRight:
+            transform = CGAffineTransformMakeRotation(degreesToRadian(90));
+            break;
+        default:
+            break;
+    }
+    return transform;
 }
 
 - (CGRect)defaultDialogFrame {
@@ -442,6 +475,7 @@ CODialogSynth(highlightedIndex)
     [overlay addSubview:self];
     [overlay makeKeyAndVisible];
   }
+  self.transform = [self dialogTransform];
 }
 
 - (void)showOrUpdateAnimated:(BOOL)flag {
