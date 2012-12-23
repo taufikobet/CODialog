@@ -69,8 +69,10 @@ CODialogSynth(highlightedIndex)
 }
 
 - (id)initWithWindow:(UIWindow *)hostWindow {
-  self = [super initWithFrame:[self defaultDialogFrame]];
+  self = [super initWithFrame: CGRectZero];
   if (self) {
+    self.transform = [self dialogTransform];
+    self.bounds = [self defaultDialogBounds];
     self.batchDelay = 0;
     self.highlightedIndex = -1;
     self.titleFont = [UIFont boldSystemFontOfSize:18.0];
@@ -144,41 +146,45 @@ CODialogSynth(highlightedIndex)
 
 - (void)orientationChanged:(NSNotification*)notification
 {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         [self setTransform: [self dialogTransform]];
-                     }];
-    
+  [UIView animateWithDuration:0.3
+                   animations:^{
+                     [self setTransform: [self dialogTransform]];
+                   }];
+  
 }
 
 - (CGAffineTransform)dialogTransform
 {
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    switch ([UIApplication sharedApplication].statusBarOrientation) {
-        case UIInterfaceOrientationPortrait:
-            transform = CGAffineTransformMakeRotation(degreesToRadian(0));
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            transform = CGAffineTransformMakeRotation(degreesToRadian(180));
-            break;
-        case UIInterfaceOrientationLandscapeLeft:
-            transform = CGAffineTransformMakeRotation(degreesToRadian(270));
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            transform = CGAffineTransformMakeRotation(degreesToRadian(90));
-            break;
-        default:
-            break;
-    }
-    return transform;
+  CGAffineTransform transform = CGAffineTransformIdentity;
+  switch ([UIApplication sharedApplication].statusBarOrientation) {
+    case UIInterfaceOrientationPortrait:
+      transform = CGAffineTransformMakeRotation(degreesToRadian(0));
+      break;
+    case UIInterfaceOrientationPortraitUpsideDown:
+      transform = CGAffineTransformMakeRotation(degreesToRadian(180));
+      break;
+    case UIInterfaceOrientationLandscapeLeft:
+      transform = CGAffineTransformMakeRotation(degreesToRadian(270));
+      break;
+    case UIInterfaceOrientationLandscapeRight:
+      transform = CGAffineTransformMakeRotation(degreesToRadian(90));
+      break;
+    default:
+      break;
+  }
+  return transform;
 }
 
-- (CGRect)defaultDialogFrame {
+- (CGRect)defaultDialogBounds {
   CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
-  CGRect insetFrame = CGRectIntegral(CGRectInset(appFrame, 20.0, 20.0));
-  insetFrame.size.height = 180.0;
-  
+  CGRect insetFrame = CGRectZero;
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+    insetFrame.size.width = 380;
+  } else {
+    insetFrame.size.width = 180;
+  }
+  insetFrame.size.height = MIN(appFrame.size.width, appFrame.size.height) - 40;
   return insetFrame;
 }
 
@@ -383,28 +389,17 @@ CODialogSynth(highlightedIndex)
   }
   
   // Adjust frame size
-  [UIView animateWithDuration:animationDuration delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
-    CGRect dialogBounds = CGRectInset(layoutFrame, -kCODialogFrameInset - kCODialogPadding, -kCODialogFrameInset - kCODialogPadding);
-    CGRect dialogFrame = CGRectZero;
-    switch ([UIApplication sharedApplication].statusBarOrientation) {
-      case UIInterfaceOrientationPortrait:
-      case UIInterfaceOrientationPortraitUpsideDown:
-        dialogFrame = dialogBounds;
-        break;
-      case UIInterfaceOrientationLandscapeLeft:
-      case UIInterfaceOrientationLandscapeRight:
-        dialogFrame = CGRectMake(CGRectGetMinX(dialogBounds), CGRectGetMinY(dialogBounds), CGRectGetHeight(dialogBounds), CGRectGetWidth(dialogBounds));
-        break;
-      default:
-        break;
-    }
-    dialogFrame.origin.x = (CGRectGetWidth(self.hostWindow.bounds) - CGRectGetWidth(dialogFrame)) / 2.0;
-    dialogFrame.origin.y = (CGRectGetHeight(self.hostWindow.bounds) - CGRectGetHeight(dialogFrame)) / 2.0;
-    
-    self.frame = CGRectIntegral(dialogFrame);
-  } completion:^(BOOL finished) {
-    [self setNeedsDisplay];
-  }];
+    [UIView animateWithDuration:animationDuration delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
+      CGRect dialogFrame = CGRectInset(layoutFrame, -kCODialogFrameInset - kCODialogPadding, -kCODialogFrameInset - kCODialogPadding);
+      self.bounds = (CGRect){CGPointZero, dialogFrame.size};
+      dialogFrame = self.frame;
+      dialogFrame.origin.x = (CGRectGetWidth(self.hostWindow.bounds) - CGRectGetWidth(dialogFrame)) / 2.0;
+      dialogFrame.origin.y = (CGRectGetHeight(self.hostWindow.bounds) - CGRectGetHeight(dialogFrame)) / 2.0;
+
+      self.frame = CGRectIntegral(dialogFrame);
+    } completion:^(BOOL finished) {
+        [self setNeedsDisplay];
+    }];
 }
 
 - (void)resetLayout {
@@ -530,10 +525,10 @@ CODialogSynth(highlightedIndex)
   NSTimeInterval animationDuration = (flag ? kCODialogAnimationDuration : 0.0);
   [UIView animateWithDuration:animationDuration delay:0 options:UIViewAnimationOptionLayoutSubviews animations:^{
     overlay.alpha = 0.0;
-    self.transform = CGAffineTransformMakeScale(kCODialogPopScale, kCODialogPopScale);
+    self.transform = CGAffineTransformScale([self dialogTransform], kCODialogPopScale, kCODialogPopScale);
   } completion:^(BOOL finished) {
     overlay.hidden = YES;
-    self.transform = CGAffineTransformIdentity;
+    self.transform = [self dialogTransform];
     [self removeFromSuperview];
     self.overlay = nil;
     
