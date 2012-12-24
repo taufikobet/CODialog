@@ -182,7 +182,7 @@ CODialogSynth(highlightedIndex)
   if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     insetFrame.size.width = 380;
   } else {
-    insetFrame.size.width = 180;
+    insetFrame.size.width = 280;
   }
   insetFrame.size.height = MIN(appFrame.size.width, appFrame.size.height) - 40;
   return insetFrame;
