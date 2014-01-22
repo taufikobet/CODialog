@@ -10,6 +10,8 @@
 #import "CTCheckbox.h"
 #import "TTTAttributedLabel.h"
 
+static NSString *const kTermsOfServiceURL = @"http://www.google.com/";
+
 @interface CODialogTextField : UITextField
 @property (nonatomic, strong) CODialog *dialog;
 @end
@@ -18,7 +20,7 @@
 @property (nonatomic, strong) CODialog *dialog;
 @end
 
-@interface CODialog ()
+@interface CODialog () <TTTAttributedLabelDelegate>
 @property (nonatomic, strong) CODialogWindowOverlay *overlay;
 @property (nonatomic, strong) UIWindow *hostWindow;
 @property (nonatomic, strong) UIView *contentView;
@@ -237,6 +239,10 @@ CODialogSynth(highlightedIndex)
         CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
         checkbox.checked = YES;
         checkbox.textLabel.text = self.checkboxText;
+        checkbox.textLabel.delegate = self;
+        NSRange range = [self.checkboxText rangeOfString:@"Terms of Service & Privacy Policy"];
+        [checkbox.textLabel addLinkToURL:[NSURL URLWithString:kTermsOfServiceURL] withRange:range];
+        
         [checkbox addTarget:self action:@selector(checkboxDidChange:) forControlEvents:UIControlEventValueChanged];
         [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateNormal];
         [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateHighlighted];
@@ -247,6 +253,11 @@ CODialogSynth(highlightedIndex)
         return self.customView;
     }
     return nil;
+}
+
+-(void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url
+{
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 -(void)checkboxDidChange:(CTCheckbox *)textBox
