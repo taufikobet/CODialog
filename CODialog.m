@@ -8,6 +8,7 @@
 
 #import "CODialog.h"
 #import "CTCheckbox.h"
+#import "TTTAttributedLabel.h"
 
 @interface CODialogTextField : UITextField
 @property (nonatomic, strong) CODialog *dialog;

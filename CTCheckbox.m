@@ -7,6 +7,7 @@
 //
 
 #import "CTCheckbox.h"
+#import "TTTAttributedLabel.h"
 
 static const float CTCheckboxDefaultSideLength = 20.0;
 
@@ -43,7 +44,8 @@ static const float CTCheckboxDefaultSideLength = 20.0;
     self.checkboxSideLength = CTCheckboxDefaultSideLength;
     self.checkboxColor = [UIColor blackColor];
     self.backgroundColor = [UIColor clearColor];
-    self.textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.textLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.backgroundColor = [UIColor clearColor];
     [self addSubview:self.textLabel];
 

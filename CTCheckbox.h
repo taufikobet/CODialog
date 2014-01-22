@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class TTTAttributedLabel;
+
 @interface CTCheckbox : UIControl
 
 @property (nonatomic) BOOL checked;
 @property (nonatomic, strong) UIColor *checkboxColor;
 @property (nonatomic) float checkboxSideLength;
-@property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) TTTAttributedLabel *textLabel;
 
 - (void)setColor:(UIColor *)color forControlState:(UIControlState)state;
 
