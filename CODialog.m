@@ -235,6 +235,7 @@ CODialogSynth(highlightedIndex)
         self.customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 88)];
         CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
         checkbox.checked = YES;
+        checkbox.textLabel.text = self.checkboxText;
         [checkbox addTarget:self action:@selector(checkboxDidChange:) forControlEvents:UIControlEventValueChanged];
         [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateNormal];
         [self.customView addSubview:checkbox];

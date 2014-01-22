@@ -26,6 +26,7 @@ typedef NSInteger CODialogStyle;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, assign) CGFloat progress;
 @property (nonatomic, assign) NSTimeInterval batchDelay;
+@property (nonatomic, copy) NSString *checkboxText;
 
 + (instancetype)dialogWithWindow:(UIWindow *)hostWindow;
 
