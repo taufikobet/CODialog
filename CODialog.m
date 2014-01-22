@@ -180,7 +180,7 @@ CODialogSynth(highlightedIndex)
     CGRect appFrame = [[UIScreen mainScreen] applicationFrame];
     CGRect insetFrame = CGRectZero;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        insetFrame.size.width = 380;
+        insetFrame.size.width = 480;
     } else {
         insetFrame.size.width = 280;
     }
@@ -232,7 +232,7 @@ CODialogSynth(highlightedIndex)
         return imageView;
     } else if (self.dialogStyle == CODialogStyleCustomView) {
         
-        self.customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 88)];
+        self.customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 350, 88)];
         CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
         checkbox.checked = YES;
         checkbox.textLabel.text = self.checkboxText;
