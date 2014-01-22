@@ -80,7 +80,10 @@ static const float CTCheckboxDefaultSideLength = 20.0;
         color = self.colorDictionary[@(UIControlStateSelected)];
     } else if (state == UIControlStateDisabled) {
         color = self.colorDictionary[@(UIControlStateDisabled)];
+    }else if (state == UIControlStateHighlighted) {
+        color = self.colorDictionary[@(UIControlStateHighlighted)];
     }
+
 
     if (!color) {
         color = [UIColor blackColor];
@@ -133,6 +136,8 @@ static const float CTCheckboxDefaultSideLength = 20.0;
         self.colorDictionary[@(UIControlStateSelected)] = color;
     } else if (state == UIControlStateDisabled) {
         self.colorDictionary[@(UIControlStateDisabled)] = color;
+    } else if (state == UIControlStateHighlighted) {
+        self.colorDictionary[@(UIControlStateHighlighted)] = color;
     }
 
     [self changeColorForState:self.state];
