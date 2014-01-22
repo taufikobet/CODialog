@@ -7,7 +7,7 @@
 //
 
 #import "CODialog.h"
-
+#import "CTCheckbox.h"
 
 @interface CODialogTextField : UITextField
 @property (nonatomic, strong) CODialog *dialog;
@@ -231,6 +231,12 @@ CODialogSynth(highlightedIndex)
         
         return imageView;
     } else if (self.dialogStyle == CODialogStyleCustomView) {
+        
+        self.customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 88)];
+        CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
+        [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateNormal];
+        [self.customView addSubview:checkbox];
+        
         return self.customView;
     }
     return nil;

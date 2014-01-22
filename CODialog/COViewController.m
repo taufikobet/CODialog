@@ -29,7 +29,24 @@
     
     [NSTimer scheduledTimerWithTimeInterval:0.25 target:self selector:@selector(advanceProgress:) userInfo:nil repeats:YES];
     
-    [self showDefault:nil];
+    [self showCheckbox:nil];
+}
+
+- (void)showCheckbox:(id)sender {
+    NSLog(@"custom");
+    
+    [self.dialog resetLayout];
+    
+    UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Octocat.png"]];
+    view.frame = CGRectMake(0, 0, 128, 128);
+    
+    self.dialog.title = @"Custom";
+    self.dialog.subtitle = @"Hi!";
+    self.dialog.dialogStyle = CODialogStyleCustomView;
+    
+    [self.dialog addButtonWithTitle:@"Hide" target:self selector:@selector(hideAndShow:)];
+    [self.dialog addButtonWithTitle:@"Next" target:self selector:@selector(showSuccess:) highlighted:YES];
+    [self.dialog showOrUpdateAnimated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
