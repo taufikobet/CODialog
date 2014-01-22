@@ -239,7 +239,12 @@ CODialogSynth(highlightedIndex)
         CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
         checkbox.checked = YES;
         checkbox.textLabel.text = self.checkboxText;
+        checkbox.textLabel.linkAttributes = @{(id)kCTForegroundColorAttributeName : [UIColor whiteColor],
+                                              (id)kCTUnderlineStyleAttributeName : [NSNumber numberWithInt:kCTUnderlineStyleSingle]};
+        checkbox.textLabel.activeLinkAttributes = @{(id)kCTForegroundColorAttributeName : [UIColor whiteColor],
+                                                    (id)kCTUnderlineStyleAttributeName : [NSNumber numberWithInt:kCTUnderlineStyleSingle]};
         checkbox.textLabel.delegate = self;
+        
         NSRange range = [self.checkboxText rangeOfString:@"Terms of Service & Privacy Policy"];
         [checkbox.textLabel addLinkToURL:[NSURL URLWithString:kTermsOfServiceURL] withRange:range];
         
