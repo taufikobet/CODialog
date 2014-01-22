@@ -238,6 +238,9 @@ CODialogSynth(highlightedIndex)
         checkbox.textLabel.text = self.checkboxText;
         [checkbox addTarget:self action:@selector(checkboxDidChange:) forControlEvents:UIControlEventValueChanged];
         [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateNormal];
+        [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateHighlighted];
+        [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateDisabled];
+        [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateSelected];
         [self.customView addSubview:checkbox];
         
         return self.customView;
