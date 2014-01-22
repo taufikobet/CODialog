@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		55F2E0E6188FBBCE00E9840F /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E0E5188FBBCE00E9840F /* CTCheckbox.m */; };
+		55F2E0E9188FD13E00E9840F /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F2E0E8188FD13E00E9840F /* TTTAttributedLabel.m */; };
 		BB1156A31608D5E400D3B2E1 /* CONTRIBUTING.md in Resources */ = {isa = PBXBuildFile; fileRef = BB1156A21608D5E400D3B2E1 /* CONTRIBUTING.md */; };
 		DC0021881537986800366339 /* Octocat.png in Resources */ = {isa = PBXBuildFile; fileRef = DC0021871537986800366339 /* Octocat.png */; };
 		DCE92A4B1536F33D006BD7ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE92A4A1536F33D006BD7ED /* UIKit.framework */; };
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		55F2E0E4188FBBCE00E9840F /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
 		55F2E0E5188FBBCE00E9840F /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
+		55F2E0E7188FD13E00E9840F /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		55F2E0E8188FD13E00E9840F /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		BB1156A21608D5E400D3B2E1 /* CONTRIBUTING.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		DC0021871537986800366339 /* Octocat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Octocat.png; sourceTree = "<group>"; };
 		DCE92A461536F33D006BD7ED /* CODialog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CODialog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +70,8 @@
 				DCE92A6A1536F3D4006BD7ED /* CODialog.m */,
 				55F2E0E4188FBBCE00E9840F /* CTCheckbox.h */,
 				55F2E0E5188FBBCE00E9840F /* CTCheckbox.m */,
+				55F2E0E7188FD13E00E9840F /* TTTAttributedLabel.h */,
+				55F2E0E8188FD13E00E9840F /* TTTAttributedLabel.m */,
 				DCE92A501536F33D006BD7ED /* CODialog */,
 				DCE92A491536F33D006BD7ED /* Frameworks */,
 				DCE92A471536F33D006BD7ED /* Products */,
@@ -189,6 +194,7 @@
 				55F2E0E6188FBBCE00E9840F /* CTCheckbox.m in Sources */,
 				DCE92A5E1536F33D006BD7ED /* COViewController.m in Sources */,
 				DCE92A6B1536F3D4006BD7ED /* CODialog.m in Sources */,
+				55F2E0E9188FD13E00E9840F /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +225,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -244,6 +251,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
