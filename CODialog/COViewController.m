@@ -42,6 +42,7 @@
     
     self.dialog.title = @"Custom";
     self.dialog.subtitle = @"Hi!";
+    self.dialog.checkboxText = @"I accept Terms of Service & Privacy Policy";
     self.dialog.dialogStyle = CODialogStyleCustomView;
     
     [self.dialog addButtonWithTitle:@"Hide" target:self selector:@selector(hideAndShow:)];
