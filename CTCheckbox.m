@@ -74,11 +74,11 @@ static const float CTCheckboxDefaultSideLength = 20.0;
 {
     UIColor *color;
 
-    if (state & UIControlStateNormal) {
+    if (state == UIControlStateNormal) {
         color = self.colorDictionary[@(UIControlStateNormal)];
-    } else if (state & UIControlStateSelected) {
+    } else if (state == UIControlStateSelected) {
         color = self.colorDictionary[@(UIControlStateSelected)];
-    } else if (state & UIControlStateDisabled) {
+    } else if (state == UIControlStateDisabled) {
         color = self.colorDictionary[@(UIControlStateDisabled)];
     }
 
@@ -127,11 +127,11 @@ static const float CTCheckboxDefaultSideLength = 20.0;
 
 - (void)setColor:(UIColor *)color forControlState:(UIControlState)state
 {
-    if (state & UIControlStateNormal) {
+    if (state == UIControlStateNormal) {
         self.colorDictionary[@(UIControlStateNormal)] = color;
-    } else if (state & UIControlStateSelected) {
+    } else if (state == UIControlStateSelected) {
         self.colorDictionary[@(UIControlStateSelected)] = color;
-    } else if (state & UIControlStateDisabled) {
+    } else if (state == UIControlStateDisabled) {
         self.colorDictionary[@(UIControlStateDisabled)] = color;
     }
 
@@ -140,11 +140,11 @@ static const float CTCheckboxDefaultSideLength = 20.0;
 
 - (void)setBackgroundColor:(UIColor *)backgroundColor forControlState:(UIControlState)state
 {
-    if (state & UIControlStateNormal) {
+    if (state == UIControlStateNormal) {
         self.backgroundColorDictionary[@(UIControlStateNormal)] = backgroundColor;
-    } else if (state & UIControlStateSelected) {
+    } else if (state == UIControlStateSelected) {
         self.backgroundColorDictionary[@(UIControlStateSelected)] = backgroundColor;
-    } else if (state & UIControlStateDisabled) {
+    } else if (state == UIControlStateDisabled) {
         self.backgroundColorDictionary[@(UIControlStateDisabled)] = backgroundColor;
     }
 
