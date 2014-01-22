@@ -10,12 +10,12 @@
 
 
 enum {
-  CODialogStyleDefault = 0,
-  CODialogStyleIndeterminate,
-  CODialogStyleDeterminate,
-  CODialogStyleSuccess,
-  CODialogStyleError,
-  CODialogStyleCustomView
+    CODialogStyleDefault = 0,
+    CODialogStyleIndeterminate,
+    CODialogStyleDeterminate,
+    CODialogStyleSuccess,
+    CODialogStyleError,
+    CODialogStyleCustomView
 };
 typedef NSInteger CODialogStyle;
 
