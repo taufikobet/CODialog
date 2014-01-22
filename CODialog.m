@@ -234,12 +234,24 @@ CODialogSynth(highlightedIndex)
         
         self.customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 88)];
         CTCheckbox *checkbox = [[CTCheckbox alloc] initWithFrame:self.customView.frame];
+        checkbox.checked = YES;
+        [checkbox addTarget:self action:@selector(checkboxDidChange:) forControlEvents:UIControlEventValueChanged];
         [checkbox setColor:[UIColor whiteColor] forControlState:UIControlStateNormal];
         [self.customView addSubview:checkbox];
         
         return self.customView;
     }
     return nil;
+}
+
+-(void)checkboxDidChange:(CTCheckbox *)textBox
+{
+    UIButton *button = self.buttons.lastObject;
+    if (textBox.checked) {
+        button.enabled = YES;
+    } else {
+        button.enabled = NO;
+    }
 }
 
 - (void)layoutComponents {
